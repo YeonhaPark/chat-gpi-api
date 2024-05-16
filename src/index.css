@@ -6,4 +6,40 @@
   .link-style {
     @apply text-2xl font-semibold hover:underline underline-offset-4 text-gray-500 hover:text-gray-900;
   }
+
+  .bounce-ball.first {
+    animation: bounce 1s infinite;
+  }
+  .bounce-ball.second {
+    animation: bounce 1s infinite;
+    animation-delay: -0.16s;
+  }
+  .bounce-ball.third {
+    animation: bounce 1s infinite;
+    animation-delay: -0.32s;
+  }
+
+  @keyframes bounce {
+    0% {
+      top: 2px;
+    }
+    50% {
+      top: 10px;
+    }
+    55% {
+      top: 18px;
+    }
+    65% {
+      top: 24px;
+    }
+    80% {
+      top: 18px;
+    }
+    95% {
+      top: 10px;
+    }
+    100% {
+      top: 2px;
+    }
+  }
 }

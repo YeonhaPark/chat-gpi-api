@@ -1,1 +1,3 @@
-export default function ChatList() {}
+export default function ChatList() {
+  return <div>ChatList</div>;
+}
