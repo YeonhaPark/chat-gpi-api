@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FiSearch } from "react-icons/fi";
 import { AiOutlineLoading } from "react-icons/ai";
 import axios from "axios";
@@ -50,18 +50,23 @@ const Home = () => {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    const gptHistory = localStorage.getItem("gpt");
+    const historyArr = gptHistory ? JSON.parse(gptHistory) : [];
+    setChatlist(historyArr);
+  }, []);
   return (
-    <div className="pb-20">
-      <ul className="mt-8 px-4">
-        {
-          <ChatList
-            chatlist={chatlist}
-            isLoading={isLoading}
-            newQuestion={content}
-          />
-        }
-      </ul>
-      <form className="pr-8 pl-16 flex justify-center" onSubmit={onSubmitChat}>
+    <div className="pb-12 flex flex-col flex-grow">
+      <ChatList
+        chatlist={chatlist}
+        isLoading={isLoading}
+        newQuestion={content}
+      />
+      <form
+        className="w-full pr-8 pl-16 flex justify-center"
+        onSubmit={onSubmitChat}
+      >
         <input
           className="rounded-lg border-2 h-10 py-1 px-2 border-blue-300 focus:outline-blue-600 flex-grow disabled:bg-slate-400"
           type="text"
